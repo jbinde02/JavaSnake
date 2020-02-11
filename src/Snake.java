@@ -1,5 +1,3 @@
-package src;
-
 public class Snake {
     Cell[] bodyarry;
     public Snake(int x, int y){

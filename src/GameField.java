@@ -1,4 +1,3 @@
-package src;
 
 public class GameField {
     int[] xar = new int[25];
