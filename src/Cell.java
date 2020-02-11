@@ -7,13 +7,11 @@ public class Cell {
     int y;
     boolean active;
     boolean body;
-    boolean head;
     Rectangle rectangle;
 
-    public Cell(int x, int y, boolean active){
+    public Cell(int x, int y){
         setX(x);
         setY(y);
-        setActive(active);
         setBody(false);
     }
 
@@ -29,12 +27,7 @@ public class Cell {
         this.y = y;
     }
 
-    public void setActive(boolean active){
-        this.active = active;
+    public void setBody(boolean state) {
+        this.body = state;
     }
-
-    public void setBody(boolean body){this.body = false; }
-
-    public void setHead(boolean head){this.head = false; }
-
 }

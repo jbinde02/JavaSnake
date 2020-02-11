@@ -1,7 +1,12 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Snake {
-    Cell[] bodyarry;
-    public Snake(int x, int y){
-        bodyarry = new Cell[100];
-        bodyarry[0] = new Cell(x,y,true);
+    Iterator<Cell> iterator;
+    ArrayList<Cell> bodyarry;
+    Cell cell;
+    public Snake(){
+        bodyarry = new ArrayList<Cell>();
+        iterator = bodyarry.iterator();
     }
 }

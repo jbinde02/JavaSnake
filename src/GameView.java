@@ -4,9 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameView extends JPanel {
-    GameField field = new GameField();
+    GameField field;
 
-    GameView(GameField field){
+    GameView(){
+        field = new GameField();
         System.out.println("View running");
     }
 
@@ -15,43 +16,34 @@ public class GameView extends JPanel {
         g2d.setColor(Color.cyan);
         for(int i = 0; i<field.xar.length; i++) {
             for(int j = 0; j<field.yar.length; j++)
-            g2d.fill3DRect(field.cellarry[i][j].x, field.cellarry[i][j].y, field.cellarry[i][j].WIDTH, field.cellarry[i][j].HEIGHT, field.cellarry[i][j].active);
+            g2d.fill3DRect(field.cellarry[i][j].x, field.cellarry[i][j].y, field.cellarry[i][j].WIDTH, field.cellarry[i][j].HEIGHT, field.cellarry[i][j].body);
 
         }
     }
 
-    public void moveActive(){
-        field.checkAll();
-        repaint();
-    }
 
     public void moveRight(){
-        field.removeSnake();
-        field.moveBody("right");
-        field.addSnake();
-        repaint();
+        field.setDirection("right");
+        field.moveBody(field.getDirection());
+
     }
     public void moveDown(){
-        field.removeSnake();
-        field.moveBody("down");
-        field.addSnake();
-        repaint();
+        field.setDirection("down");
+        field.moveBody(field.getDirection());
+
     }
     public void moveLeft(){
-        field.removeSnake();
-        field.moveBody("left");
-        field.addSnake();
-        repaint();
+        field.setDirection("left");
+        field.moveBody(field.getDirection());
+
     }
     public void moveUp(){
-        field.removeSnake();
-        field.moveBody("up");
-        field.addSnake();
-        repaint();
+        field.setDirection("up");
+        field.moveBody(field.getDirection());
+
     }
-    public void addBody(){
-        field.addBody();
-        repaint();
+    public void checkDirection(){
+        field.moveBody(field.getDirection());
     }
 
 }

@@ -1,22 +1,39 @@
 
-
 import javax.swing.*;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 class GameController{
+    Timer timer;
+    TimerTask timerTask;
     private JFrame frame;
     private GameField field;
     private GameView view;
-    private KeyListener keyListener;
     GameController(){
-         view = new GameView(field);
+         view = new GameView();
          createFrame();
          frame.add(view);
          createListener();
+
+        timer = new Timer();
+
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                update();
+            }
+        };
+
+        timer.schedule(timerTask, 0, 500);
          System.out.println("Controller running");
     }
-
+    public void update(){
+        view.checkDirection();
+        view.repaint();
+    }
     private void createFrame(){
         frame = new JFrame("SnakeFrame");
         frame.setSize(600, 600);
@@ -25,15 +42,9 @@ class GameController{
     }
 
     private void createListener(){
-        frame.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e){
-                //System.out.println("Key Typed");
-            }
-
+        frame.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e){
-                //System.out.println("Key Pressed");
                 int keyCode = e.getKeyCode();
                 switch( keyCode ) {
                     case KeyEvent.VK_UP:
@@ -52,20 +63,8 @@ class GameController{
                         // handle right
                         view.moveRight();
                         break;
-                    case KeyEvent.VK_SPACE :
-                        // handle space
-                        view.addBody();
-                        break;
                 }
-                //view.moveActive();
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e){
-                //System.out.println("Key Released");
             }
         });
     }
-
-
 }
