@@ -5,7 +5,6 @@ public class Cell {
     final int HEIGHT = 20;
     int x;
     int y;
-    boolean active;
     boolean body;
     Rectangle rectangle;
 
@@ -25,6 +24,13 @@ public class Cell {
 
     public void setY(int y){
         this.y = y;
+    }
+
+    public int getCol(int y){
+        return y/20;
+    }
+    public int getRow(int x){
+        return x/20;
     }
 
     public void setBody(boolean state) {

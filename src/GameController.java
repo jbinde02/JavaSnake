@@ -63,6 +63,10 @@ class GameController{
                         // handle right
                         view.moveRight();
                         break;
+                    case KeyEvent.VK_SPACE :
+                        // Debug Stop
+                        view.moveStop();
+                        break;
                 }
             }
         });
