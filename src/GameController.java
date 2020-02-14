@@ -27,7 +27,7 @@ class GameController{
             }
         };
 
-        timer.schedule(timerTask, 0, 500);
+        timer.schedule(timerTask, 0, 300);
          System.out.println("Controller running");
     }
     public void update(){

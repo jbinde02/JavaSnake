@@ -23,43 +23,37 @@ public class GameView extends JPanel {
 
 
     public void moveRight(){
-        if(field.getDirection().equals("right")){
+        if(field.getDirection().equals("right") || field.getDirection().equals("left") ){
             return;
         }
         field.setDirection("right");
-        field.moveBody(field.getDirection());
     }
     public void moveDown(){
-        if(field.getDirection().equals("down")){
+        if(field.getDirection().equals("down") || field.getDirection().equals("up")){
             return;
         }
         field.setDirection("down");
-        field.moveBody(field.getDirection());
     }
     public void moveLeft(){
-        if(field.getDirection().equals("left")){
+        if(field.getDirection().equals("left") || field.getDirection().equals("right")){
             return;
         }
         field.setDirection("left");
-        field.moveBody(field.getDirection());
     }
     public void moveUp(){
-        if(field.getDirection().equals("up")){
+        if(field.getDirection().equals("up") || field.getDirection().equals("down")){
             return;
         }
         field.setDirection("up");
-        field.moveBody(field.getDirection());
     }
     public void moveStop(){
         if(field.getDirection().equals("none")){
             return;
         }
         field.setDirection("none");
-        field.moveBody(field.getDirection());
     }
     public void checkDirection(){
         field.moveBody(field.getDirection());
     }
-
 }
 

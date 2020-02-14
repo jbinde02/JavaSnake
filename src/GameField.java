@@ -12,7 +12,8 @@ public class GameField {
         createGrid();
         snake = new Snake();
         addBody(cellArray[2][2]);
-        addBody(cellArray[1][2]);
+        addBody(cellArray[2][1]);
+        addBody(cellArray[2][0]);
         direction = "none";
         System.out.println("Field running");
     }
@@ -60,39 +61,41 @@ public class GameField {
     public void moveBody(String direction){
         Cell[] snakeArray = snake.toArray();
         int i = 0;
+        Cell previousCell;
         for(Cell cell : snakeArray){
+            previousCell = cell;
             switch (direction) {
                 case "up":
-                    if(cell != snake.bodyList.get(0)){
-                        cell = snake.bodyList.get(snake.bodyList.indexOf(cell)-1);
-                        break;
+                    if(!cell.equals(snakeArray[i])){
+                        addBody(previousCell);
+                        removeBody(cell);
                     }
                     addBody(cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)-1]);
                     removeBody(cell);
                     System.out.println("up");
                     break;
                     case "down":
-                        if(cell != snake.bodyList.get(0)){
-                            cell = snake.bodyList.get(snake.bodyList.indexOf(cell)-1);
-                            break;
+                        if(!cell.equals(snakeArray[i])){
+                            addBody(previousCell);
+                            removeBody(cell);
                         }
                         addBody(cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)+1]);
                         removeBody(cell);
                         System.out.println("down");
                         break;
                     case "left":
-                        if(cell != snake.bodyList.get(0)){
-                            cell = snake.bodyList.get(snake.bodyList.indexOf(cell)-1);
-                            break;
+                        if(!cell.equals(snakeArray[i])){
+                            addBody(previousCell);
+                            removeBody(cell);
                         }
                         addBody(cellArray[cell.getRow(cell.x)-1][cell.getCol(cell.y)]);
                         removeBody(cell);
                         System.out.println("left");
                         break;
                     case "right":
-                        if(cell != snake.bodyList.get(0)){
-                            cell = snake.bodyList.get(snake.bodyList.indexOf(cell)-1);
-                            break;
+                        if(!cell.equals(snakeArray[i])){
+                            addBody(previousCell);
+                            removeBody(cell);
                         }
                         addBody(cellArray[cell.getRow(cell.x)+1][cell.getCol(cell.y)]);
                         removeBody(cell);
@@ -101,8 +104,8 @@ public class GameField {
                     case "none":
                         break;
             }
-            i++;
         }
+        i++;
     }
 
 }
