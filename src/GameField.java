@@ -58,28 +58,32 @@ public class GameField {
         Cell previousCell = new Cell();
         int index = 0;
         for(Cell cell : snakeArray){
+            System.out.println(index);
             switch (direction) {
                     case "up":
                         snake.replaceBody(cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)-1], previousCell, index);
+                        previousCell = cell;
                         System.out.println("up");
                         break;
 
                     case "down":
                         snake.replaceBody(cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)+1], previousCell, index);
+                        previousCell = cell;
                         System.out.println("down");
                         break;
 
                     case "left":
                         snake.replaceBody(cellArray[cell.getRow(cell.x)-1][cell.getCol(cell.y)], previousCell, index);
+                        previousCell = cell;
                         System.out.println("left");
                         break;
 
                         case "right":
                         snake.replaceBody(cellArray[cell.getRow(cell.x)+1][cell.getCol(cell.y)], previousCell, index);
+                        previousCell = cell;
                         System.out.println("right");
                         break;
                     }
-                    previousCell = cell;
                     index++;
         }
     }
