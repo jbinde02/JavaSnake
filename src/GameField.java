@@ -5,26 +5,19 @@ public class GameField {
     Cell[][] cellArray;
     Snake snake;
     String direction;
+
     GameField(){
         xar = new int[25];
         yar = new int[25];
         cellArray = new Cell[xar.length][yar.length];
         createGrid();
         snake = new Snake();
-        addBody(cellArray[2][2]);
-        addBody(cellArray[2][1]);
-        addBody(cellArray[2][0]);
+        snake.addBody(cellArray[2][2]);
+        snake.addBody(cellArray[2][1]);
         direction = "none";
         System.out.println("Field running");
     }
-    public void addBody(Cell cell){
-        snake.bodyList.add(cell);
-        cell.body = true;
-    }
-    public void removeBody(Cell cell){
-        cell.body = false;
-        snake.bodyList.remove(snake.bodyList.size()-2);
-    }
+
     private void createGrid(){
         populateXY();
         populateCell();
@@ -55,57 +48,39 @@ public class GameField {
     public void setDirection(String direction){
         this.direction = direction;
     }
+
     public String getDirection(){
         return this.direction;
     }
+
     public void moveBody(String direction){
         Cell[] snakeArray = snake.toArray();
-        int i = 0;
-        Cell previousCell;
+        Cell previousCell = new Cell();
+        int index = 0;
         for(Cell cell : snakeArray){
-            previousCell = cell;
             switch (direction) {
-                case "up":
-                    if(!cell.equals(snakeArray[i])){
-                        addBody(previousCell);
-                        removeBody(cell);
-                    }
-                    addBody(cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)-1]);
-                    removeBody(cell);
-                    System.out.println("up");
-                    break;
+                    case "up":
+                        snake.replaceBody(cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)-1], previousCell, index);
+                        System.out.println("up");
+                        break;
+
                     case "down":
-                        if(!cell.equals(snakeArray[i])){
-                            addBody(previousCell);
-                            removeBody(cell);
-                        }
-                        addBody(cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)+1]);
-                        removeBody(cell);
+                        snake.replaceBody(cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)+1], previousCell, index);
                         System.out.println("down");
                         break;
+
                     case "left":
-                        if(!cell.equals(snakeArray[i])){
-                            addBody(previousCell);
-                            removeBody(cell);
-                        }
-                        addBody(cellArray[cell.getRow(cell.x)-1][cell.getCol(cell.y)]);
-                        removeBody(cell);
+                        snake.replaceBody(cellArray[cell.getRow(cell.x)-1][cell.getCol(cell.y)], previousCell, index);
                         System.out.println("left");
                         break;
-                    case "right":
-                        if(!cell.equals(snakeArray[i])){
-                            addBody(previousCell);
-                            removeBody(cell);
-                        }
-                        addBody(cellArray[cell.getRow(cell.x)+1][cell.getCol(cell.y)]);
-                        removeBody(cell);
+
+                        case "right":
+                        snake.replaceBody(cellArray[cell.getRow(cell.x)+1][cell.getCol(cell.y)], previousCell, index);
                         System.out.println("right");
                         break;
-                    case "none":
-                        break;
-            }
+                    }
+                    previousCell = cell;
+                    index++;
         }
-        i++;
     }
-
 }

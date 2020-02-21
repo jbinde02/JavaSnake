@@ -6,16 +6,21 @@ public class Cell {
     int x;
     int y;
     boolean body;
-    Rectangle rectangle;
+
+
+
+    boolean head;
+
 
     public Cell(int x, int y){
         setX(x);
         setY(y);
         setBody(false);
+        setHead(false);
     }
 
-    public void setRectangle(){
-        this.rectangle = new Rectangle(x,y,WIDTH,HEIGHT);
+    public Cell(){
+
     }
 
     public void setX(int x) {
@@ -26,14 +31,29 @@ public class Cell {
         this.y = y;
     }
 
-    public int getCol(int y){
-        return y/20;
-    }
-    public int getRow(int x){
-        return x/20;
+    public void setHead(boolean head) {
+        this.head = head;
     }
 
     public void setBody(boolean state) {
         this.body = state;
     }
+
+    public int getCol(int y){
+        return y/20;
+    }
+
+    public int getRow(int x){
+        return x/20;
+    }
+
+    public boolean isHead(){
+        if(!this.head){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+
 }
