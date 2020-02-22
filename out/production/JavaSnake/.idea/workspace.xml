@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab77cdb4-f8ea-4e61-9bb4-d278c1578979" name="Default Changelist" comment="">
+    <list default="true" id="ab77cdb4-f8ea-4e61-9bb4-d278c1578979" name="Default Changelist" comment="Doesn't work now but changing it for the better.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/Cell.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/GameField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/Snake.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/Snake.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +19,7 @@
     <option name="done" value="true" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="293" />
+    <option name="myElementSize" value="310" />
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
@@ -156,6 +156,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/JavaSnake$Main.ic" NAME="Main Coverage Results" MODIFIED="1581604731396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/JavaSnake$Main.ic" NAME="Main Coverage Results" MODIFIED="1582320414546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

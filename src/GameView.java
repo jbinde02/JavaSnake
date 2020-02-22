@@ -21,7 +21,6 @@ public class GameView extends JPanel {
         }
     }
 
-
     public void moveRight(){
         if(field.getDirection().equals("right") || field.getDirection().equals("left") ){
             return;

@@ -10,14 +10,14 @@ class GameController{
     Timer timer;
     TimerTask timerTask;
     private JFrame frame;
-    private GameField field;
     private GameView view;
+    int frameRate;
     GameController(){
-         view = new GameView();
-         createFrame();
-         frame.add(view);
-         createListener();
-
+        view = new GameView();
+        createFrame();
+        frame.add(view);
+        createListener();
+        frameRate = 1;
         timer = new Timer();
 
         timerTask = new TimerTask() {
@@ -27,8 +27,8 @@ class GameController{
             }
         };
 
-        timer.schedule(timerTask, 0, 300);
-         System.out.println("Controller running");
+        timer.schedule(timerTask, 0, 1000/frameRate);
+        System.out.println("Controller running");
     }
     public void update(){
         view.checkDirection();
@@ -50,22 +50,27 @@ class GameController{
                     case KeyEvent.VK_UP:
                         // handle up
                         view.moveUp();
+                        System.out.print("up" + " ");
                         break;
                     case KeyEvent.VK_DOWN:
                         // handle down
                         view.moveDown();
+                        System.out.print("down" + " ");
                         break;
                     case KeyEvent.VK_LEFT:
                         // handle left
                         view.moveLeft();
+                        System.out.print("left" + " ");
                         break;
                     case KeyEvent.VK_RIGHT :
                         // handle right
                         view.moveRight();
+                        System.out.print("right" + " ");
                         break;
                     case KeyEvent.VK_SPACE :
                         // Debug Stop
                         view.moveStop();
+                        System.out.print("stop" + " ");
                         break;
                 }
             }

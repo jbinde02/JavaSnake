@@ -15,6 +15,9 @@ public class Snake {
     public void addBody(Cell cell){
         cell.setBody(true);
         bodyList.add(cell);
+        if(bodyList.indexOf(cell) == 0){
+            cell.setHead(true);
+        }
     }
 
     public void removeBody(Cell cell){
@@ -26,16 +29,21 @@ public class Snake {
         bodyList.remove(bodyList.indexOf(cell));
     }
 
-    public void replaceBody(Cell newCell,Cell oldCell, int index){
-        bodyList.set(index, newCell);
-        newCell.setBody(true);
-        if(bodyList.indexOf(newCell) == 0){
+    public void replaceBody(Cell newCell, Cell previousCell, int index){
+        if(!bodyList.get(index).isHead()){
+            newCell = previousCell;
+            newCell.setBody(true);
+            bodyList.set(index, newCell);
+
+        }else {
+            bodyList.set(index, newCell);
+            newCell.setBody(true);
             newCell.setHead(true);
         }
         try {
-            removeBody(oldCell);
+            removeBody(previousCell);
         }catch (Exception e){
-            System.out.println("Pass");
+
         }
     }
 }

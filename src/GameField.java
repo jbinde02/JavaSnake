@@ -56,35 +56,33 @@ public class GameField {
     public void moveBody(String direction){
         Cell[] snakeArray = snake.toArray();
         Cell previousCell = new Cell();
+        Cell newCell;
         int index = 0;
         for(Cell cell : snakeArray){
-            System.out.println(index);
+            System.out.println("Cell:" + index +" "+ cell.x +" "+ cell.y +" ");
             switch (direction) {
-                    case "up":
-                        snake.replaceBody(cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)-1], previousCell, index);
-                        previousCell = cell;
-                        System.out.println("up");
-                        break;
+                case "up":
+                    newCell = cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)-1];
+                    snake.replaceBody(newCell, previousCell, index);
+                    break;
 
-                    case "down":
-                        snake.replaceBody(cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)+1], previousCell, index);
-                        previousCell = cell;
-                        System.out.println("down");
-                        break;
+                case "down":
+                    newCell = cellArray[cell.getRow(cell.x)][cell.getCol(cell.y)+1];
+                    snake.replaceBody(newCell, previousCell, index);
+                    break;
 
-                    case "left":
-                        snake.replaceBody(cellArray[cell.getRow(cell.x)-1][cell.getCol(cell.y)], previousCell, index);
-                        previousCell = cell;
-                        System.out.println("left");
-                        break;
+                case "left":
+                    newCell = cellArray[cell.getRow(cell.x)-1][cell.getCol(cell.y)];
+                    snake.replaceBody(newCell, previousCell, index);
+                    break;
 
-                        case "right":
-                        snake.replaceBody(cellArray[cell.getRow(cell.x)+1][cell.getCol(cell.y)], previousCell, index);
-                        previousCell = cell;
-                        System.out.println("right");
-                        break;
-                    }
-                    index++;
+                case "right":
+                    newCell = cellArray[cell.getRow(cell.x)+1][cell.getCol(cell.y)];
+                    snake.replaceBody(newCell, previousCell, index);
+                    break;
+            }
+            index++;
+            previousCell = cell;
         }
     }
 }
