@@ -1,12 +1,9 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Snake {
-    Iterator<Cell> iterator;
     ArrayList<Cell> bodyList;
     public Snake(){
         bodyList = new ArrayList<Cell>();
-        iterator = bodyList.iterator();
     }
     public Cell[] toArray(){
         return bodyList.toArray(new Cell[bodyList.size()]);
@@ -20,30 +17,18 @@ public class Snake {
         }
     }
 
-    public void removeBody(Cell cell){
-        cell.setBody(false);
-        cell.setHead(false);
-        if((Integer)bodyList.indexOf(cell) == null){
-            throw new IndexOutOfBoundsException();
-        }
-        bodyList.remove(bodyList.indexOf(cell));
-    }
 
-    public void replaceBody(Cell newCell, Cell previousCell, int index){
-        if(!bodyList.get(index).isHead()){
-            newCell = previousCell;
-            newCell.setBody(true);
+    public void replaceBody(Cell newCell,int index){
+        if(index != 0){
+            bodyList.get(index).setBody(false);
             bodyList.set(index, newCell);
-
+            newCell.setBody(true);
         }else {
+            bodyList.get(index).setBody(false);
+            bodyList.get(index).setHead(false);
             bodyList.set(index, newCell);
             newCell.setBody(true);
             newCell.setHead(true);
-        }
-        try {
-            removeBody(previousCell);
-        }catch (Exception e){
-
         }
     }
 }

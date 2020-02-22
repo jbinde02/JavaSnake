@@ -2,7 +2,6 @@
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,7 +16,7 @@ class GameController{
         createFrame();
         frame.add(view);
         createListener();
-        frameRate = 1;
+        frameRate = 5;
         timer = new Timer();
 
         timerTask = new TimerTask() {
