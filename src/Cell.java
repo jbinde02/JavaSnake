@@ -55,5 +55,13 @@ public class Cell {
         }
     }
 
+    public boolean isBody(){
+        if(!this.body){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
 
 }

@@ -57,7 +57,7 @@ public class GameField {
         return this.direction;
     }
 
-    public void moveBody(String direction){
+    public void moveBody (String direction) throws Exception{
         Cell[] snakeArray = snake.toArray();
         Cell newCell = new Cell();
         int index = 0;
@@ -66,6 +66,9 @@ public class GameField {
             switch (direction) {
                 case "up":
                     if(index == 0) {
+                        if(cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)] == null){
+                            throw new Exception("Hit wall");
+                        }
                         newCell = cellArray[cell.getRow(cell.x)][cell.getCol(cell.y) - 1];
                     }
                     snake.replaceBody(newCell, index);
@@ -73,6 +76,9 @@ public class GameField {
 
                 case "down":
                     if(index == 0) {
+                        if(cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)] == null){
+                            throw new Exception("Hit wall");
+                        }
                         newCell = cellArray[cell.getRow(cell.x)][cell.getCol(cell.y) + 1];
                     }
                     snake.replaceBody(newCell, index);
@@ -80,6 +86,9 @@ public class GameField {
 
                 case "left":
                     if(index == 0) {
+                        if(cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)] == null){
+                            throw new Exception("Hit wall");
+                        }
                         newCell = cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)];
                     }
                     snake.replaceBody(newCell, index);
@@ -87,6 +96,9 @@ public class GameField {
 
                 case "right":
                     if(index == 0) {
+                        if(cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)] == null){
+                            throw new Exception("Hit wall");
+                        }
                         newCell = cellArray[cell.getRow(cell.x) + 1][cell.getCol(cell.y)];
                     }
                     snake.replaceBody(newCell, index);
