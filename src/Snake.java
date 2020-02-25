@@ -12,9 +12,6 @@ public class Snake {
     public void addBody(Cell cell){
         cell.setBody(true);
         bodyList.add(cell);
-        if(bodyList.indexOf(cell) == 0){
-            cell.setHead(true);
-        }
     }
 
 
@@ -25,10 +22,8 @@ public class Snake {
             newCell.setBody(true);
         }else {
             bodyList.get(index).setBody(false);
-            bodyList.get(index).setHead(false);
             bodyList.set(index, newCell);
             newCell.setBody(true);
-            newCell.setHead(true);
         }
     }
 }

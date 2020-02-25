@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class GameField {
     int[] xar;
@@ -5,8 +6,10 @@ public class GameField {
     Cell[][] cellArray;
     Snake snake;
     String direction;
+    Random random;
 
     GameField(){
+        random = new Random();
         xar = new int[25];
         yar = new int[25];
         cellArray = new Cell[xar.length][yar.length];
@@ -18,6 +21,7 @@ public class GameField {
         snake.addBody(cellArray[2][2]);
         snake.addBody(cellArray[2][1]);
         snake.addBody(cellArray[2][0]);
+        addFood(cellArray[10][10]);
         direction = "none";
         System.out.println("Field running");
     }
@@ -121,5 +125,30 @@ public class GameField {
             index++;
         }
         return false;
+    }
+
+    public boolean foodExist(){
+        for(int i = 0; i<xar.length; i++){
+            for(int j = 0; j<yar.length; j++){
+                if(cellArray[i][j].food){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void addFood(Cell cell){
+        cell.setFood(true);
+    }
+
+    public void addRandomFood(){
+        int randomInt1 = random.nextInt(xar.length - 1);
+        int randomInt2 = random.nextInt(yar.length - 1);
+        cellArray[randomInt1][randomInt2].setFood(true);
+    }
+
+    public void eatFood(){
+
     }
 }

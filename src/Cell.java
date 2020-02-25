@@ -6,17 +6,11 @@ public class Cell {
     int x;
     int y;
     boolean body;
-
-
-
-    boolean head;
-
-
+    boolean food;
     public Cell(int x, int y){
         setX(x);
         setY(y);
         setBody(false);
-        setHead(false);
     }
 
     public Cell(){
@@ -31,12 +25,12 @@ public class Cell {
         this.y = y;
     }
 
-    public void setHead(boolean head) {
-        this.head = head;
-    }
-
     public void setBody(boolean state) {
         this.body = state;
+    }
+
+    public void setFood(boolean state) {
+        this.food = state;
     }
 
     public int getCol(int y){
@@ -46,22 +40,5 @@ public class Cell {
     public int getRow(int x){
         return x/20;
     }
-
-    public boolean isHead(){
-        if(!this.head){
-            return false;
-        }else {
-            return true;
-        }
-    }
-
-    public boolean isBody(){
-        if(!this.body){
-            return false;
-        }else {
-            return true;
-        }
-    }
-
 
 }

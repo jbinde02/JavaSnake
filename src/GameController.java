@@ -37,6 +37,7 @@ class GameController{
     public void update(){
         checkDirection();
         checkCollision();
+        checkFood();
         view.repaint();
     }
     private void createFrame(){
@@ -124,6 +125,12 @@ class GameController{
         if(field.isHeadCollision()){
             System.out.println("Body Collision!");
             gameOver();
+        }
+    }
+
+    public void checkFood(){
+        if(!field.foodExist()){
+            field.addRandomFood();
         }
     }
 
