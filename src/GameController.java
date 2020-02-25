@@ -36,6 +36,7 @@ class GameController{
     }
     public void update(){
         checkDirection();
+        checkCollision();
         view.repaint();
     }
     private void createFrame(){
@@ -54,27 +55,22 @@ class GameController{
                     case KeyEvent.VK_UP:
                         // handle up
                         moveUp();
-                        System.out.print("up" + " ");
                         break;
                     case KeyEvent.VK_DOWN:
                         // handle down
                         moveDown();
-                        System.out.print("down" + " ");
                         break;
                     case KeyEvent.VK_LEFT:
                         // handle left
                         moveLeft();
-                        System.out.print("left" + " ");
                         break;
                     case KeyEvent.VK_RIGHT :
                         // handle right
                         moveRight();
-                        System.out.print("right" + " ");
                         break;
                     case KeyEvent.VK_SPACE :
                         // Debug Stop
                         moveStop();
-                        System.out.print("stop" + " ");
                         break;
                 }
             }
@@ -117,12 +113,22 @@ class GameController{
     }
 
     public void checkDirection(){
-        try {
-            field.moveBody(field.getDirection());
-        }catch(Exception e){
-            System.out.println(e.getLocalizedMessage() + " Game Over!");
-            isPlaying = false;
-
+        if(field.moveBody(field.getDirection())){
+            System.out.println("Hit Wall!");
+            gameOver();
         }
+
+    }
+
+    public void checkCollision(){
+        if(field.isHeadCollision()){
+            System.out.println("Body Collision!");
+            gameOver();
+        }
+    }
+
+    public void gameOver(){
+        System.out.println("Game Over!");
+        isPlaying = false;
     }
 }

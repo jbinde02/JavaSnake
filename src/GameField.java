@@ -57,48 +57,48 @@ public class GameField {
         return this.direction;
     }
 
-    public void moveBody (String direction) throws Exception{
+    public boolean moveBody (String direction){
         Cell[] snakeArray = snake.toArray();
         Cell newCell = new Cell();
         int index = 0;
         for(Cell cell : snakeArray){
-            System.out.println("Cell:" + index +" "+ cell.x +" "+ cell.y +" ");
+           // System.out.println("Cell:" + index +" "+ cell.x +" "+ cell.y +" ");
             switch (direction) {
                 case "up":
+                    if(cell.getCol(cell.y) - 1 < 0){
+                        return true;
+                    }
                     if(index == 0) {
-                        if(cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)] == null){
-                            throw new Exception("Hit wall");
-                        }
                         newCell = cellArray[cell.getRow(cell.x)][cell.getCol(cell.y) - 1];
                     }
                     snake.replaceBody(newCell, index);
                     break;
 
                 case "down":
+                    if(cell.getCol(cell.y) + 1 == yar.length){
+                        return true;
+                    }
                     if(index == 0) {
-                        if(cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)] == null){
-                            throw new Exception("Hit wall");
-                        }
                         newCell = cellArray[cell.getRow(cell.x)][cell.getCol(cell.y) + 1];
                     }
                     snake.replaceBody(newCell, index);
                     break;
 
                 case "left":
+                    if(cell.getRow(cell.x) - 1 < 0){
+                        return true;
+                    }
                     if(index == 0) {
-                        if(cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)] == null){
-                            throw new Exception("Hit wall");
-                        }
                         newCell = cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)];
                     }
                     snake.replaceBody(newCell, index);
                     break;
 
                 case "right":
+                    if(cell.getRow(cell.x) + 1 == xar.length){
+                        return true;
+                    }
                     if(index == 0) {
-                        if(cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)] == null){
-                            throw new Exception("Hit wall");
-                        }
                         newCell = cellArray[cell.getRow(cell.x) + 1][cell.getCol(cell.y)];
                     }
                     snake.replaceBody(newCell, index);
@@ -107,5 +107,19 @@ public class GameField {
             index++;
             newCell = cell;
         }
+        return false;
+    }
+
+    public boolean isHeadCollision() {
+        Cell[] snakeArray = snake.toArray();
+        Cell head = snake.bodyList.get(0);
+        int index = 0;
+        for (Cell cell : snakeArray) {
+            if(cell == head && index != 0){
+                return true;
+            }
+            index++;
+        }
+        return false;
     }
 }
