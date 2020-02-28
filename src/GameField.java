@@ -65,6 +65,7 @@ public class GameField {
         Cell[] snakeArray = snake.toArray();
         Cell newCell = new Cell();
         int index = 0;
+        boolean foodAte = false;
         for(Cell cell : snakeArray){
            // System.out.println("Cell:" + index +" "+ cell.x +" "+ cell.y +" ");
             switch (direction) {
@@ -74,6 +75,11 @@ public class GameField {
                     }
                     if(index == 0) {
                         newCell = cellArray[cell.getRow(cell.x)][cell.getCol(cell.y) - 1];
+                        if(newCell.food == true){
+                            eatFood(newCell);
+                            foodAte = true;
+                            break;
+                        }
                     }
                     snake.replaceBody(newCell, index);
                     break;
@@ -84,6 +90,11 @@ public class GameField {
                     }
                     if(index == 0) {
                         newCell = cellArray[cell.getRow(cell.x)][cell.getCol(cell.y) + 1];
+                        if(newCell.food == true){
+                            eatFood(newCell);
+                            foodAte = true;
+                            break;
+                        }
                     }
                     snake.replaceBody(newCell, index);
                     break;
@@ -94,6 +105,11 @@ public class GameField {
                     }
                     if(index == 0) {
                         newCell = cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)];
+                        if(newCell.food == true){
+                            eatFood(newCell);
+                            foodAte = true;
+                            break;
+                        }
                     }
                     snake.replaceBody(newCell, index);
                     break;
@@ -104,9 +120,18 @@ public class GameField {
                     }
                     if(index == 0) {
                         newCell = cellArray[cell.getRow(cell.x) + 1][cell.getCol(cell.y)];
+                        if(newCell.food == true){
+                            eatFood(newCell);
+                            foodAte = true;
+                            break;
+                        }
                     }
                     snake.replaceBody(newCell, index);
                     break;
+            }
+            if(foodAte){
+                foodAte = false;
+                break;
             }
             index++;
             newCell = cell;
@@ -148,7 +173,9 @@ public class GameField {
         cellArray[randomInt1][randomInt2].setFood(true);
     }
 
-    public void eatFood(){
-
+    public void eatFood(Cell cell){
+        cell.setFood(false);
+        snake.addBody(cell);
+        System.out.println("Yummy!");
     }
 }

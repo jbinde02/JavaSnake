@@ -19,7 +19,7 @@ class GameController{
         createFrame();
         frame.add(view);
         createListener();
-        frameRate = 5;
+        frameRate = 10;
         timer = new Timer();
         isPlaying = true;
 
