@@ -1,12 +1,12 @@
 import java.util.Random;
 
-public class GameField {
+class GameField {
     int[] xar;
     int[] yar;
     Cell[][] cellArray;
-    Snake snake;
-    String direction;
-    Random random;
+    private Snake snake;
+    private String direction;
+    private Random random;
 
     GameField(){
         random = new Random();
@@ -53,21 +53,20 @@ public class GameField {
         }
     }
 
-    public void setDirection(String direction){
+    void setDirection(String direction){
         this.direction = direction;
     }
 
-    public String getDirection(){
+    String getDirection(){
         return this.direction;
     }
 
-    public boolean moveBody (String direction){
+    boolean moveBody(String direction){
         Cell[] snakeArray = snake.toArray();
         Cell newCell = new Cell();
         int index = 0;
         boolean foodAte = false;
         for(Cell cell : snakeArray){
-           // System.out.println("Cell:" + index +" "+ cell.x +" "+ cell.y +" ");
             switch (direction) {
                 case "up":
                     if(cell.getCol(cell.y) - 1 < 0){
@@ -75,7 +74,7 @@ public class GameField {
                     }
                     if(index == 0) {
                         newCell = cellArray[cell.getRow(cell.x)][cell.getCol(cell.y) - 1];
-                        if(newCell.food == true){
+                        if(newCell.food){
                             eatFood(newCell);
                             foodAte = true;
                             break;
@@ -90,7 +89,7 @@ public class GameField {
                     }
                     if(index == 0) {
                         newCell = cellArray[cell.getRow(cell.x)][cell.getCol(cell.y) + 1];
-                        if(newCell.food == true){
+                        if(newCell.food){
                             eatFood(newCell);
                             foodAte = true;
                             break;
@@ -105,7 +104,7 @@ public class GameField {
                     }
                     if(index == 0) {
                         newCell = cellArray[cell.getRow(cell.x) - 1][cell.getCol(cell.y)];
-                        if(newCell.food == true){
+                        if(newCell.food){
                             eatFood(newCell);
                             foodAte = true;
                             break;
@@ -120,7 +119,7 @@ public class GameField {
                     }
                     if(index == 0) {
                         newCell = cellArray[cell.getRow(cell.x) + 1][cell.getCol(cell.y)];
-                        if(newCell.food == true){
+                        if(newCell.food){
                             eatFood(newCell);
                             foodAte = true;
                             break;
@@ -130,7 +129,6 @@ public class GameField {
                     break;
             }
             if(foodAte){
-                foodAte = false;
                 break;
             }
             index++;
@@ -139,7 +137,7 @@ public class GameField {
         return false;
     }
 
-    public boolean isHeadCollision() {
+    boolean isHeadCollision() {
         Cell[] snakeArray = snake.toArray();
         Cell head = snake.bodyList.get(0);
         int index = 0;
@@ -152,7 +150,7 @@ public class GameField {
         return false;
     }
 
-    public boolean foodExist(){
+    boolean foodExist(){
         for(int i = 0; i<xar.length; i++){
             for(int j = 0; j<yar.length; j++){
                 if(cellArray[i][j].food){
@@ -163,17 +161,17 @@ public class GameField {
         return false;
     }
 
-    public void addFood(Cell cell){
+    private void addFood(Cell cell){
         cell.setFood(true);
     }
 
-    public void addRandomFood(){
+    void addRandomFood(){
         int randomInt1 = random.nextInt(xar.length - 1);
         int randomInt2 = random.nextInt(yar.length - 1);
         cellArray[randomInt1][randomInt2].setFood(true);
     }
 
-    public void eatFood(Cell cell){
+    private void eatFood(Cell cell){
         cell.setFood(false);
         snake.addBody(cell);
         System.out.println("Yummy!");

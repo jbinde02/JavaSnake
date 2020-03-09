@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="JavaSnake:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab77cdb4-f8ea-4e61-9bb4-d278c1578979" name="Default Changelist" comment="">
+    <list default="true" id="ab77cdb4-f8ea-4e61-9bb4-d278c1578979" name="Default Changelist" comment="Game is working for the most part. Controls can be tightened up and maybe fix the food eating being slow but seems good now.">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JavaSnake_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/Cell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/GameController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/GameController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/GameController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/GameController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/GameField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/GameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/GameView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaSnake/Snake.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaSnake/Snake.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,9 +59,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>

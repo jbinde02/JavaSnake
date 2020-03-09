@@ -1,43 +1,42 @@
-import java.awt.*;
 
-public class Cell {
+class Cell {
     final int WIDTH = 20;
     final int HEIGHT = 20;
     int x;
     int y;
     boolean body;
     boolean food;
-    public Cell(int x, int y){
+    Cell(int x, int y){
         setX(x);
         setY(y);
         setBody(false);
     }
 
-    public Cell(){
+    Cell(){
 
     }
 
-    public void setX(int x) {
+    private void setX(int x) {
         this.x = x;
     }
 
-    public void setY(int y){
+    private void setY(int y){
         this.y = y;
     }
 
-    public void setBody(boolean state) {
+    void setBody(boolean state) {
         this.body = state;
     }
 
-    public void setFood(boolean state) {
+    void setFood(boolean state) {
         this.food = state;
     }
 
-    public int getCol(int y){
+    int getCol(int y){
         return y/20;
     }
 
-    public int getRow(int x){
+    int getRow(int x){
         return x/20;
     }
 

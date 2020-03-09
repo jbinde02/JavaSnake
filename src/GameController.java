@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -6,35 +5,32 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 class GameController{
-    Timer timer;
-    TimerTask timerTask;
     private JFrame frame;
     private GameField field;
     private GameView view;
-    int frameRate;
-    boolean isPlaying;
+    private boolean isPlaying;
     GameController(){
         field = new GameField();
         view = new GameView(field);
         createFrame();
         frame.add(view);
         createListener();
-        frameRate = 10;
-        timer = new Timer();
+        int frameRate = 10;
+        Timer timer = new Timer();
         isPlaying = true;
 
-        timerTask = new TimerTask() {
+        TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                if(isPlaying){
+                if (isPlaying) {
                     update();
                 }
             }
         };
-        timer.schedule(timerTask, 0, 1000/frameRate);
+        timer.schedule(timerTask, 0, 1000/ frameRate);
         System.out.println("Controller running");
     }
-    public void update(){
+    private void update(){
         checkDirection();
         checkCollision();
         checkFood();
@@ -78,42 +74,42 @@ class GameController{
         });
     }
 
-    public void moveRight(){
+    private void moveRight(){
         if(field.getDirection().equals("right") || field.getDirection().equals("left") ){
             return;
         }
         field.setDirection("right");
     }
 
-    public void moveDown(){
+    private void moveDown(){
         if(field.getDirection().equals("down") || field.getDirection().equals("up")){
             return;
         }
         field.setDirection("down");
     }
 
-    public void moveLeft(){
+    private void moveLeft(){
         if(field.getDirection().equals("left") || field.getDirection().equals("right")){
             return;
         }
         field.setDirection("left");
     }
 
-    public void moveUp(){
+    private void moveUp(){
         if(field.getDirection().equals("up") || field.getDirection().equals("down")){
             return;
         }
         field.setDirection("up");
     }
 
-    public void moveStop(){
+    private void moveStop(){
         if(field.getDirection().equals("none")){
             return;
         }
         field.setDirection("none");
     }
 
-    public void checkDirection(){
+    private void checkDirection(){
         if(field.moveBody(field.getDirection())){
             System.out.println("Hit Wall!");
             gameOver();
@@ -121,20 +117,20 @@ class GameController{
 
     }
 
-    public void checkCollision(){
+    private void checkCollision(){
         if(field.isHeadCollision()){
             System.out.println("Body Collision!");
             gameOver();
         }
     }
 
-    public void checkFood(){
+    private void checkFood(){
         if(!field.foodExist()){
             field.addRandomFood();
         }
     }
 
-    public void gameOver(){
+    private void gameOver(){
         System.out.println("Game Over!");
         isPlaying = false;
     }
