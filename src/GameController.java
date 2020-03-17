@@ -4,11 +4,22 @@ import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * This class works the game loop, creates the frame, and manages the controls.
+ *
+ * @author Jacob Binder
+ */
+
 class GameController{
     private JFrame frame;
     private GameField field;
     private GameView view;
     private boolean isPlaying;
+
+    /**
+     * The constructor is creating the frame and the game loop which runs Update using a timer. The speed can be changed
+     * by altering the frameRate integer. x frameRate = x frames per second.
+     */
     GameController(){
         field = new GameField();
         view = new GameView(field);
@@ -30,12 +41,17 @@ class GameController{
         timer.schedule(timerTask, 0, 1000/ frameRate);
         System.out.println("Controller running");
     }
+
+    /**
+     * These will run every frame.
+     */
     private void update(){
         checkDirection();
         checkCollision();
         checkFood();
         view.repaint();
     }
+
     private void createFrame(){
         frame = new JFrame("SnakeFrame");
         frame.setSize(600, 600);
@@ -43,6 +59,9 @@ class GameController{
         frame.setVisible(true);
     }
 
+    /**
+     * This handles keyboard inputs.
+     */
     private void createListener(){
         frame.addKeyListener(new KeyAdapter() {
             @Override
@@ -109,6 +128,9 @@ class GameController{
         field.setDirection("none");
     }
 
+    /**
+     * Tells snake in the field class to move. If snake hits the wall, trigger a game over.
+     */
     private void checkDirection(){
         if(field.moveBody(field.getDirection())){
             System.out.println("Hit Wall!");
@@ -117,6 +139,9 @@ class GameController{
 
     }
 
+    /**
+     * Checks if the head has run into itself. If true then trigger a game over.
+     */
     private void checkCollision(){
         if(field.isHeadCollision()){
             System.out.println("Body Collision!");
@@ -124,6 +149,9 @@ class GameController{
         }
     }
 
+    /**
+     * Checks if there is food on the field. If not, add food to random spot on field.
+     */
     private void checkFood(){
         if(!field.foodExist()){
             field.addRandomFood();

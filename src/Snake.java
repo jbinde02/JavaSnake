@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * This class represents the snake. The snake is made up of an arrayList that cells are added or removed to according to
+ * if they are part of the snake. The head will be the first cell in the index.
+ *
+ * @author Jacob Binder
+ */
 class Snake {
     ArrayList<Cell> bodyList;
     Snake(){
